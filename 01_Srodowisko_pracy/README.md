@@ -1,4 +1,4 @@
-# 1. Środowisko pracy
+p# 1. Środowisko pracy
 
 - ### Instalacja interpretera Python
   - #### https://www.python.org/downloads/ (Wybieramy 3.11.*)

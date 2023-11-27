@@ -1,5 +1,5 @@
-a=2+2
-A=5
+a = 2 + 2
+A = 5
 print(a)
 print(A)
 
@@ -8,3 +8,6 @@ a
 a *= 0
 a
 
+A = 1
+b = 2
+print (A+b)
