@@ -42,3 +42,19 @@ s2 = '.|.'
 s2.join(["Ala", "ma", "kota"])
 
 '.' in s2
+
+lista = []
+while True:
+    element = input("Dodaj element:")
+    lista.append(element)
+    if not element:
+        break
+lista.sort()
+print (lista[1:])
+
+i = 0
+wysokosc = int(input("Wysokosc Choinki:"))
+while (i < wysokosc):
+    choinka= "*" * i
+    print(choinka.center(wysokosc, " "))
+    i += 1
