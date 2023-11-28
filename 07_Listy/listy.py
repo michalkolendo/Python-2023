@@ -44,13 +44,25 @@ s2.join(["Ala", "ma", "kota"])
 '.' in s2
 
 lista = []
+parzysta = 0
 while True:
     element = input("Dodaj element:")
-    lista.append(element)
     if not element:
         break
-lista.sort()
-print (lista[1:])
+    lista.append(element)
+lista.sort(reverse=True)
+for a in lista:
+    if (int(a) % 2 == 0):
+        parzysta = a
+        break
+
+print(parzysta)
+
+
+
+
+
+
 
 i = 0
 wysokosc = int(input("Wysokosc Choinki:"))

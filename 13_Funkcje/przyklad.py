@@ -71,3 +71,37 @@ def choinka(poziom, separator=" ", znak="*"):
 
 choinka(5)
 choinka(znak='#', poziom=6)
+
+#stworzyc słownik { 'first': funkcja1, 'second': funkcja2 }, wczytać przez input klucz, wywołać funkcję
+
+def dodaj3(x):
+    wynik = x + 3
+    return wynik
+
+def dodaj4(x):
+    wynik = x + 3
+    return wynik
+
+slownik =  { 'first': dodaj3, 'second': dodaj4 }
+
+t = input('Podaj klucz')
+funkcja = slownik[t]
+print(funkcja(4))
+
+
+# stworzyc funckcję alphabet_range działająca jak range ale dla liter (z trzema parametrami - start, end, step)
+#przykład: alphabet_range('E') -> ['A', 'B', 'C', 'D'] - albo jeszcze lepiej generator
+# użyć
+# ord - podaje kod calkowity danego znaku
+# chr - podaje znak odpowiadający danemu kodowi całkowitemu
+
+def alphabet_range(start = 'a',end = 'e',step = 0):
+    st = ord(start)
+    en = ord(end)
+    stp = step
+    result = ""
+    for i in range(st,en+1, stp):
+        result += chr(i)
+    return result
+
+print(alphabet_range("a","l",2))
