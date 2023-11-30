@@ -206,3 +206,12 @@ reka.sort()
 reka
 
 str(spades_ace)
+
+class Fooditem:
+    def __init__(self, id, price, item):
+        self.id = id
+        self.price = price
+        self.item = item
+
+    def __repr__(self):
+        return f'Card("{self.id}", "{self.price}", "{self.item}")'
