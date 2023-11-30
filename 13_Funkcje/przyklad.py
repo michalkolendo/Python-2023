@@ -99,9 +99,8 @@ def alphabet_range(start = 'a',end = 'e',step = 0):
     st = ord(start)
     en = ord(end)
     stp = step
-    result = ""
-    for i in range(st,en+1, stp):
+    for i in range(st,en, stp):
         result += chr(i)
     return result
 
-print(alphabet_range("a","l",2))
+print(alphabet_range("a","l",1))

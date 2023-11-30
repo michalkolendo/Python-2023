@@ -61,12 +61,16 @@ print(parzysta)
 
 
 
-
-
-
 i = 0
-wysokosc = int(input("Wysokosc Choinki:"))
+while (True):
+    try:
+        wysokosc = int(input("Wysokosc Choinki:"))
+        break
+
+    except Exception as e:
+        print('NIe podales liczby ciulu!')
+
 while (i < wysokosc):
     choinka= "*" * i
     print(choinka.center(wysokosc, " "))
-    i += 1
+    i += 2

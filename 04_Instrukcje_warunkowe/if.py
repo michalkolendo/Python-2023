@@ -41,3 +41,14 @@ if (suma_cyfr % 7 == 0) and (i % 2 == 0):
     print(f'Dobra liczba')
 else:
     print(f'Zła liczba')
+
+i=100
+while (i < 0):
+
+    suma_cyfr = (i % 10 + i // 10)
+    if (suma_cyfr % 7 == 0) and (i % 2 == 0):
+        print (f'{i}')
+    else:
+        i -=1
+
+i = int(input("podaj liczbę naturalną"))

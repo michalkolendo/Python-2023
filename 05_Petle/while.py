@@ -48,3 +48,4 @@ while n > 0:
 else:
     print('Koniec')
 
+whuke n < 0
