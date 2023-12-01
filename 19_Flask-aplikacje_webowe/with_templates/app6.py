@@ -19,3 +19,8 @@ def add():
     data.append(args["name"])
 
     return render_template('form.html', data=data, tytul="Dodano pozycję do listy")
+@app.route('/show', methods=["POST"]cd)
+def show():
+    args = request.form
+    imie = args["name"]
+    return render_template('form.html', data=data, tytul="Cześć " + imie)
