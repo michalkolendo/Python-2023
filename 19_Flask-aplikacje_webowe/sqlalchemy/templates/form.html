@@ -62,18 +62,27 @@ ul li::before {
 <h2 style="color: red">{{ tytul }}</h2>
 {% endif %}
 
-<form action="/add">
-    <label for="name">Imię użytkownika:</label>
-    <input type="text" id="name" name="name" value="Przykładowe imię"><br>
+<form action="/addnote">
+    <label for="note1">Tytul:</label>
+    <label for="note2">Notatka:</label>
+    <input type="text" id="note1" name="title" value=""><input type="text" id="note2" name="note" value=""><br>
     <input class="button button1" type="submit" value="Dodaj !">
+</form>
+
 </form>
 <ul>
     {% for item in data %}
-    <li>{{ item }}</li>
+    <li>{{ item }} <a href="/removetag?tag={{item.id}}">X</a></li>
     {% else %}
-    no items
+    no tags
     {% endfor %}
 </ul>
-
+<ul>
+    {% for item in notes %}
+    <li>{{ item.title }} | {{item.body }} <a href="/removenote?note={{item.id}}">X</a></li>
+    {% else %}
+    no notes
+    {% endfor %}
+</ul>
 </body>
 </html>

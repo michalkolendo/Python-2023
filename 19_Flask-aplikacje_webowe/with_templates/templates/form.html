@@ -44,10 +44,10 @@ input[type=text]:focus {
     <h1>Hello World!</h1>
     <h2>{{ tytul }}</h2>
 
-<form action="/add">
+<form action="/show" method="POST">
   <label for="name">Nazwa:</label><br>
-  <input type="text" id="name" name="name" value="Nazwa"><br>
-  <input class="button button1" type="submit" value="Dodaj !">
+  <input type="text" id="name" name="name" value="Imie"><br>
+  <input class="button button1" type="submit" value="Poka Poka!">
 </form>
 <ul>
 {% for item in data  %}
