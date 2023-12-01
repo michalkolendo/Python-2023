@@ -11,10 +11,19 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///notes.db'
+app.config['SQLALCHEMY_ECHO'] = True
 db = SQLAlchemy(app)
 
 
+class NoteTag(db.Model):
+    __tablename__ = 'notetag'
+    id = db.Column('id', db.Integer, primary_key=True)
+    tag_id = db.Column('tag_id', db.Integer, db.ForeignKey('tag.id'))
+    note_id = db.Column('note_id', db.Integer, db.ForeignKey('note.id'))
+
+
 class Tag(db.Model):
+    __tablename__ = 'tag'
     id = db.Column(db.Integer, primary_key=True)
     tagname = db.Column(db.String(80), unique=True, nullable=False)
 
@@ -23,9 +32,15 @@ class Tag(db.Model):
 
 
 class Note(db.Model):
+    __tablename__ = 'note'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80), nullable=False)
     body = db.Column(db.String(80), nullable=False)
+    tags = db.relationship("Tag",
+                           secondary='notetag',
+                           uselist=True,
+                           backref='notes',
+                           lazy='select')
 
     def __repr__(self):
         return '<note %r>' % self.title
@@ -131,3 +146,19 @@ def removenote():
     remove_note(args["note"], db.session)
     return render_template('form.html', data=get_tags(db.session), notes=get_notes(db.session),
                            tytul="Usunieto notatke")
+
+
+@app.route('/join')
+def join():
+    args = request.args
+    jointables(args['noteID'], args['tagID'], db.session)
+    return render_template('form.html', data=get_tags(db.session), notes=get_notes(db.session),
+                           tytul="Usunieto notatke")
+
+
+def jointables(noteid, tagid, session):
+    note = session.query(Note).filter_by(id=noteid).one()
+    tag = session.query(Tag).filter_by(id=tagid).one()
+    note.tags.append(tag)
+    session.add(note)
+    session.commit()
